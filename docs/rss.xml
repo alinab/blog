@@ -37,6 +37,35 @@
     <guid>https://blue-indus.in/posts/test.html</guid>
     <dc:creator>Alina Banerjee</dc:creator>
 </item>
+<item>
+    <title>Testing One More Time</title>
+    <link>https://blue-indus.in/posts/test-second.html</link>
+    <description><![CDATA[<div id="title">
+  <a id="logo" href="/archive.html">&#8592;</a>
+</div>
+<div id="wrapper" class="article">
+<h1><em class="date"><span>2026-06-24</span></em> Testing One More Time</h1>
+
+
+<p>This is another test.</p>
+
+
+<div class="footer">
+  <hr>
+  <a href="mailto:alina@blue-indus.in">alina@blue-indus.in</a> &middot; <a
+      href="https://x.com/interregnumish">twitter</a> &middot; <a
+      href="https://mathstodon.xyz/@alinab">mastodon</a> &middot; <a
+  href="https://github.com/alinab/fork-blog/tree/master/posts/test-second.md">source</a>
+</div>
+
+<div id="comments"></div>
+
+</div>
+]]></description>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 UT</pubDate>
+    <guid>https://blue-indus.in/posts/test-second.html</guid>
+    <dc:creator>Alina Banerjee</dc:creator>
+</item>
 
     </channel>
 </rss>

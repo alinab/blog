@@ -13,8 +13,13 @@ import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import qualified Data.Text as T
 
+config :: Configuration
+config = defaultConfiguration
+  { destinationDirectory = "docs"
+  }
+
 main :: IO ()
-main = hakyll $ do -- Assets
+main = hakyllWith config $ do -- Assets
   match "assets/**" $ do
     route idRoute
     compile copyFileCompiler

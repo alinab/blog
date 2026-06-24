@@ -64,9 +64,9 @@ main = hakyll $ do -- Assets
   create ["rss.xml"] $ renderFeed renderRss
 
   -- CV
-  match "cv/*" $ do
-    route idRoute
-    compile copyFileCompiler
+  -- match "cv/*" $ do
+  --   route idRoute
+  --   compile copyFileCompiler
 
 postCtx :: Context String
 postCtx = mconcat
@@ -114,11 +114,11 @@ renderFeed f = do
 
 feedConf :: FeedConfiguration
 feedConf = FeedConfiguration
-  { feedTitle       = "bitonic's blog."
-  , feedDescription = "Often in error, never in doubt."
-  , feedAuthorName  = "Francesco Mazzoli"
-  , feedAuthorEmail = "f@mazzo.li"
-  , feedRoot        = "http://mazzo.li"
+  { feedTitle       = "alina's blog."
+  , feedDescription = "types and bits"
+  , feedAuthorName  = "Alina Banerjee"
+  , feedAuthorEmail = "alina@blue-indus.in"
+  , feedRoot        = "https://blue-indus.in"
   }
 
 writerOpts :: Bool -> WriterOptions

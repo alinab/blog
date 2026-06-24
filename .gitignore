@@ -23,7 +23,6 @@ ideas
 dist-newstyle/
 
 # Don't store assets
-assets/images
 assets/other
 assets/webpack
 assets/comments/

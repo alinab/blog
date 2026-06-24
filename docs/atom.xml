@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>alina's blog.</title>
+    <subtitle><![CDATA[types and bits]]></subtitle>
+    <link href="https://blue-indus.in/atom.xml" rel="self" />
+    <link href="https://blue-indus.in" />
+    <id>https://blue-indus.in/atom.xml</id>
+    <author>
+        <name>Alina Banerjee</name>
+        
+        <email>alina@blue-indus.in</email>
+        
+    </author>
+    <updated>2026-06-24T00:00:00Z</updated>
+    <entry>
+    <title>Testing</title>
+    <link href="https://blue-indus.in/posts/test.html" />
+    <id>https://blue-indus.in/posts/test.html</id>
+    <published>2026-06-24T00:00:00Z</published>
+    <updated>2026-06-24T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<div id="title">
+  <a id="logo" href="/archive.html">&#8592;</a>
+</div>
+<div id="wrapper" class="article">
+<h1><em class="date"><span>2026-06-24</span></em> Testing</h1>
+
+
+<p>This is a test.</p>
+
+
+<div class="footer">
+  <hr>
+  <a href="mailto:alina@blue-indus.in">alina@blue-indus.in</a> &middot; <a
+      href="https://x.com/interregnumish">twitter</a> &middot; <a
+      href="https://mathstodon.xyz/@alinab">mastodon</a> &middot; <a
+  href="https://github.com/alinab/fork-blog/tree/master/posts/test.md">source</a>
+</div>
+
+<div id="comments"></div>
+
+</div>
+]]></summary>
+</entry>
+
+</feed>

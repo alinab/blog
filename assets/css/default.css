@@ -40,7 +40,7 @@ html * {
   I also keep the landscape mode unzoomed so that people can use it to check
   out the code.
 */
-@media (-webkit-min-device-pixel-ratio: 1.95) and (max-width: 1000px) and (orientation: portrait) { 
+@media (-webkit-min-device-pixel-ratio: 1.95) and (max-width: 1000px) and (orientation: portrait) {
     html {
         font-size: 1.6rem;
     }
@@ -56,7 +56,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: justify;
-    background-color: #FFFFF0;
+    background-color: #CFEAFF;
 }
 
 code, samp {
@@ -174,12 +174,12 @@ h1 a, h2 a, h3 a {
     justify-self: stretch;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.95) and (max-width: 1000px) { 
+@media (-webkit-min-device-pixel-ratio: 1.95) and (max-width: 1000px) {
     .article h1 {
         grid-column-start: 1 !important;
         grid-column-end: 3 !important;
         justify-self: stretch;
-    }    
+    }
 }
 
 h1, h2, h3, h4, h5, h5 {
@@ -601,7 +601,7 @@ hr, ul, ol, .article .sourceCode, .article pre, .article h1, .article h2, .artic
   text-align: center;
 }
 
-@media (orientation: portrait) or (max-width: 800px) { 
+@media (orientation: portrait) or (max-width: 800px) {
   .large-image {
     grid-column-end: 3 !important;
   }
@@ -612,10 +612,10 @@ hr, ul, ol, .article .sourceCode, .article pre, .article h1, .article h2, .artic
 }
 
 .extra-large-image {
-  grid-column-end: 3 !important; 
+  grid-column-end: 3 !important;
 }
 
-@media (orientation: portrait) or (max-width: 800px) { 
+@media (orientation: portrait) or (max-width: 800px) {
   .extra-large-image img {
     width: 100%;
   }

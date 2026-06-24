@@ -3,9 +3,9 @@ body {
     max-width: 1060px;
     margin: 1.5em;
     background-color: black;
-    background-image: url('/assets/images/home_bg.jpg');
-    background-repeat:no-repeat;
-    background-position:left top;
+    background-image: url('/assets/images/img_vietnam.jpg');
+    background-repeat: no-repeat;
+    background-position: left top;
     color: black;
     font-family: "IBM Plex Serif", Garamond, serif;
     font-size: 1.1em;

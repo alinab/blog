@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>alina's blog.</title>
+        <link>https://blue-indus.in</link>
+        <description><![CDATA[types and bits]]></description>
+        <atom:link href="https://blue-indus.in/rss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Wed, 24 Jun 2026 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>Testing</title>
+    <link>https://blue-indus.in/posts/test.html</link>
+    <description><![CDATA[<div id="title">
+  <a id="logo" href="/archive.html">&#8592;</a>
+</div>
+<div id="wrapper" class="article">
+<h1><em class="date"><span>2026-06-24</span></em> Testing</h1>
+
+
+
+
+
+<div class="footer">
+  <hr>
+  <a href="mailto:alina@blue-indus.in">alina@blue-indus.in</a> &middot; <a
+      href="https://x.com/interregnumish">twitter</a> &middot; <a
+      href="https://mathstodon.xyz/@alinab">mastodon</a> &middot; <a
+  href="https://github.com/alinab/fork-blog/tree/master/posts/test.md">source</a>
+</div>
+
+<div id="comments"></div>
+
+</div>
+]]></description>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 UT</pubDate>
+    <guid>https://blue-indus.in/posts/test.html</guid>
+    <dc:creator>Alina Banerjee</dc:creator>
+</item>
+
+    </channel>
+</rss>

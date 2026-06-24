@@ -20,6 +20,7 @@ wip/
 yarn-error.log
 .vscode
 ideas
+dist-newstyle/
 
 # Don't store assets
 assets/images

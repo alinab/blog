@@ -102,7 +102,7 @@ isPublished :: (MonadMetadata m, MonadFail m) => Item a -> m Bool
 isPublished (itemIdentifier -> ident) = do
   publishedM <- getMetadataField ident "published"
   case publishedM of
-    Nothing -> return True
+    Nothing -> return False
     Just "false" -> return False
     Just "true" -> return True
     Just s -> fail ("invalid `published' metadata value: " ++ s)
@@ -119,11 +119,11 @@ renderFeed f = do
 
 feedConf :: FeedConfiguration
 feedConf = FeedConfiguration
-  { feedTitle       = "alina's blog."
+  { feedTitle       = "Alina's blog."
   , feedDescription = "types and bits"
   , feedAuthorName  = "Alina Banerjee"
   , feedAuthorEmail = "alina@blue-indus.in"
-  , feedRoot        = "https://blue-indus.in"
+  , feedRoot        = "https://www.blue-indus.in"
   }
 
 writerOpts :: Bool -> WriterOptions

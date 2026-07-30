@@ -7,6 +7,7 @@ import           Control.Monad
 import           Data.Maybe (fromMaybe, isJust)
 import           Hakyll
 import           Hakyll.Core.Compiler.Internal
+import           Hakyll.Web.Tags (getTags)
 import           Text.Pandoc.Options
 import           KaTeXify
 import qualified Text.Pandoc as Pandoc
@@ -52,7 +53,7 @@ main = hakyllWith config $ do -- Assets
   create ["archive.html"] $ do
     route idRoute
     let archiveCtx =
-          field "posts" (\_ -> postList recentFirst) <> constField "title" "type blag — index" <> defaultContext
+          field "posts" (\_ -> postList recentFirst) <> constField "title" "bits and pieces — index" <> defaultContext
     compile $
       makeItem "" >>=
       loadAndApplyTemplate "templates/archive.html" archiveCtx >>=
@@ -66,7 +67,7 @@ main = hakyllWith config $ do -- Assets
 
   -- RSS and Atom
   create ["atom.xml"] $ renderFeed renderAtom
-  create ["rss.xml"] $ renderFeed renderRss
+  create ["rss.xml"] $ renderFeedFpl renderRss
 
   -- CV
   -- match "cv/*" $ do
@@ -107,6 +108,9 @@ isPublished (itemIdentifier -> ident) = do
     Just "true" -> return True
     Just s -> fail ("invalid `published' metadata value: " ++ s)
 
+isTagFpl :: (MonadMetadata m, MonadFail m) => Item a -> m Bool
+isTagFpl (itemIdentifier -> ident) = elem "fpl" <$> getTags ident
+
 renderFeed
   :: (FeedConfiguration -> Context String -> [Item String] -> Compiler (Item String))
   -> Rules ()
@@ -116,6 +120,20 @@ renderFeed f = do
   compile $ do
     posts <- fmap (take 10) . recentFirst =<< filterM isPublished =<< loadAllSnapshots "posts/*" "content"
     f feedConf feedCtx posts
+
+renderFeedFpl
+  :: (FeedConfiguration -> Context String -> [Item String] -> Compiler (Item String))
+  -> Rules ()
+renderFeedFpl f = do
+  route idRoute
+  let feedCtx = postCtx <> bodyField "description"
+  compile $ do
+    posts <- fmap (take 20) . recentFirst
+      =<< filterM isTagFpl
+      =<< filterM isPublished
+      =<< loadAllSnapshots "posts/*" "content"
+    f feedConf feedCtx posts
+
 
 feedConf :: FeedConfiguration
 feedConf = FeedConfiguration

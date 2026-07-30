@@ -20,7 +20,7 @@
     "webpack": "^5.36.2",
     "webpack-bundle-analyzer": "^4.6.1",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^4.0.0"
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "@fontsource/eb-garamond": "^4.3.0",
@@ -29,8 +29,8 @@
     "@fontsource/ibm-plex-serif": "^4.3.0",
     "@fontsource/jetbrains-mono": "^4.3.0",
     "@fontsource/jost": "^4.3.0",
-    "dompurify": "^2.4.0",
-    "katex": "^0.13.9",
+    "dompurify": "^3.4.12",
+    "katex": "^0.18.1",
     "marked": "^4.1.1",
     "marked-smartypants": "^1.1.5",
     "react": "^18.2.0",

@@ -7,33 +7,46 @@ published: true
 ---
 
 
-A paper I have been reading through on recently ([OxCaml](https://dl.acm.org/doi/10.1145/3674642)) does some very clever things with the OCaml type system. The basic idea is to wrap OCaml function types with qualifiers to ensure memory access safety statically from within the type system.
+A paper I have been reading through on recently ([OxCaml](https://dl.acm.org/doi/10.1145/3674642))
+does some very clever things with the OCaml type system. The basic idea is to
+wrap OCaml function types with qualifiers to ensure memory access safety
+statically from within the type system.
 
-I wanted to write down notes on parts of the paper but then thought of a different idea - start with the underlying structure that has been used to add qualifiers to the type system and go from there. And for that, I thought I would start, as much as possible, from the beginning with relations and orders.
+I wanted to write down notes on parts of the paper but then thought of a different
+idea - start with the underlying structure that has been used to add qualifiers
+to the type system and go from there. And for that, I thought I would start,
+as much as possible, from the beginning with relations and orders.
 
 #### The Basics - Relations
 
-To understand what a relation is, let's start with a set. Relying on the definition of a set to be a collection of objects, a relation can be thought of as a:
+To understand what a relation is, let's start with a set. Relying on the definition
+of a set to be a collection of objects, a relation can be thought of as a:
 
 - function between sets, for example:
 
     - *A* as a set of numbers from 1 to 26 and
     - *B* as the set of all letters in the English alphabet,
-    - the relation "is the nth letter in the alphabet" written as a function: $f(x) = y$ where $x \in A$ and $y \in B$
+    - the relation "is the nth letter in the alphabet" written as a function:
+    $f(x) = y$ where $x \in A$ and $y \in B$
 
 - sets of elements, where:
 
     - taking *A* as a set of numbers from 1 to 26 and
     - *B* as the set of all letters in the English alphabet,
-    - the relation "is the nth letter in the alphabet" is denoted by R and consists of the set of pairs defined as: $(x, y) \in R$ where $x \in A$ and $y \in B$.
+    - the relation "is the nth letter in the alphabet" is denoted by R and consists
+    of the set of pairs defined as: $(x, y) \in R$ where $x \in A$ and $y \in B$.
 
 
-Using the second definition, for any two sets *X* and *Y*, denoting *X* x *Y* as the set of all possible pairs with $x \in X$, $y \in Y$, a binary relation **R** is its subset i.e. the set containing pairs for **R** holds for $x,y$. When both $x, y \in X$, **R** is a relation on X itself.
+Using the second definition, for any two sets *X* and *Y*, denoting *X* x *Y*
+as the set of all possible pairs with $x \in X$, $y \in Y$, a binary relation
+**R** is its subset i.e. the set containing pairs for **R** holds for $x,y$.
+When both $x, y \in X$, **R** is a relation on X itself.
 
 ##### Properties of Relations
 
 
-Using the notation $xRy$ for $(x,y) \in R$, relations on a set X for all $x,y,z \in X$ can be characterized as:
+Using the notation $xRy$ for $(x,y) \in R$, relations on a set X for all
+$x,y,z \in X$ can be characterized as:
 
 | Type          | Notation        | Note |
 | :------------- | :---------------- | :-------- |
@@ -47,13 +60,18 @@ Using the notation $xRy$ for $(x,y) \in R$, relations on a set X for all $x,y,z 
 | asymmetric    | $xRy \to \neg(yRx)$     |                       |
 <!-- | clique        | $xRy$                   | R holds for all $x,y \in X$ | -->
 
-It always helps to work through examples for dry mathematical definitions, so let's see some for each property listed above. Given $x,y,z \in$ a set $X$:
+It always helps to work through examples for dry mathematical definitions, so
+let's see some for each property listed above. Given $x,y,z \in$ a set $X$:
 
 - **empty** ($\neg(xRy))$:
 
-    - R = $\varnothing$ and $X = {1,2,3,4,5}$ denotes R has no pairs. All of the other properties become vacuously true (hold for the empty set) except for the reflexive one. Since R is empty, there isn't a way to relate ***every*** $x$ to itself.
+    - R = $\varnothing$ and $X = {1,2,3,4,5}$ denotes R has no pairs. All of the
+    other properties become vacuously true (hold for the empty set) except for
+    the reflexive one. Since R is empty, there isn't a way to relate ***every*** $x$ to itself.
 
-    - The one subtlety is that if both R = $\varnothing$ and $X = \varnothing$, then the reflexive property holds along with all others (all elements of an empty set are related to themselves via an empty relation).
+    - The one subtlety is that if both R = $\varnothing$ and $X = \varnothing$,
+    then the reflexive property holds along with all others (all elements of an
+    empty set are related to themselves via an empty relation).
 
 - **reflexive** ($xRx$):
 
@@ -67,7 +85,9 @@ It always helps to work through examples for dry mathematical definitions, so le
 
     - R = ${(x, x) | \hspace{0.5em} \neg(x \lt x)}$ = $\varnothing$ = $neg(1 \lt 1, 2 \lt 2, ...)$
 
-    - R = ${(x, y) | \hspace{0.5em} x \subsetneq y}$ where $x,y$ are sets and elements of the powerset of set X. ($\subsetneq$ stands for "is a subset of and not equal to" and denotes a strict subset).
+    - R = ${(x, y) | \hspace{0.5em} x \subsetneq y}$ where $x,y$ are sets and
+    elements of the powerset of set X. ($\subsetneq$ stands for "is a subset of
+    and not equal to" and denotes a strict subset).
 
 - **identity** ($xRy \to x = y$):
 
@@ -87,19 +107,24 @@ It always helps to work through examples for dry mathematical definitions, so le
 
 - **symmetric** ($xRy \to yRx$):
 
-    - For X = $\mathbb{R} \backslash {0}$ i.e. the set of reals **excluding 0**, multiplicative inverses i.e. $R = {(x, y) | \hspace{0.5em} x = 1/y}$
+    - For X = $\mathbb{R} \backslash {0}$ i.e. the set of reals **excluding 0**,
+    multiplicative inverses i.e. $R = {(x, y) | \hspace{0.5em} x = 1/y}$
 
     - For X = $\mathbb{R}$ only, additive inverses i.e. $R = ${(x, y) | x = -y}$
 
-    - For X be the set of all nodes in a graph with the depth of a node defined from its root. Then $R = {(x, y) | \hspace{0.5em} depth(a) = depth(b)}$
+    - For X be the set of all nodes in a graph with the depth of a node defined
+    from its root. Then $R = {(x, y) | \hspace{0.5em} depth(a) = depth(b)}$
 
     are all symmetric
 
 - **antisymmetric** ($xRy \land yRx \to x=y$):
 
-    - For $X$ as the set of positive integers, xRy where R is "divides". If x were to divide y and y x, then the only possibility is that x = y.
+    - For $X$ as the set of positive integers, xRy where R is "divides". If x
+    were to divide y and y x, then the only possibility is that x = y.
 
-    - R = ${(x, y) | \hspace{0.5em} x \subset y}$ where $x,y$ are sets and elements of the powerset of set X. ($\subset$ stands for "is a subset of"). Only if $x = y$ can $xRy \land yRx$ hold
+    - R = ${(x, y) | \hspace{0.5em} x \subset y}$ where $x,y$ are sets and
+    elements of the powerset of set X. ($\subset$ stands for "is a subset of").
+    Only if $x = y$ can $xRy \land yRx$ hold
 
 - **asymmetric** ($xRy \to \neg(yRx)$):
 
@@ -113,9 +138,11 @@ It always helps to work through examples for dry mathematical definitions, so le
 
 There are two important points for each property described above where each:
 
-- holds for a relation R if and only if it holds of its converse R$^{op}$, defined by $xRy \iff yR^{op}x$ (courtesy of the duality principle)
+- holds for a relation R if and only if it holds of its converse R$^{op}$,
+defined by $xRy \iff yR^{op}x$ (courtesy of the duality principle)
 
-- extends to Boolean combinations of the above properties i.e. those formed using the boolean 'and' ($\land$), 'or' ($\lor$) and 'not' ($\neg$).
+- extends to Boolean combinations of the above properties i.e. those formed
+using the boolean 'and' ($\land$), 'or' ($\lor$) and 'not' ($\neg$).
 
 ### The Sense in Relations
 
@@ -124,7 +151,9 @@ defined above, an idea of how we can use such relations to position elements
 within the set comes from the definitions of the relations themselves.
 
 The original idea of using relations to determine relative positions of elements
-i.e. an order between them comes from a [paper](https://www.jstor.org/stable/pdf/2247671.pdf) by Bertrand Russell titled "On the Notion of Order". The crux of the paper is as follows:
+i.e. an order between them comes from a [paper](https://www.jstor.org/stable/pdf/2247671.pdf)
+by Bertrand Russell titled "On the Notion of Order". The crux of the paper is
+as follows:
 
 > A casual collection of terms may be ordered by counting, in which
 > case they are correlated with the integers; by speech, in which case
@@ -204,30 +233,38 @@ is a (weakly) ***partially ordered set*** (or a ***poset***). The "weak" signifi
 elements can be related to themselves.
 
 An interesting mathematical property is that a relation is asymmetric if and only if
-it is both antisymmetric and irreflexive. So the asymmetry property of the strict partial order
-subsumes both an irreflexive property (superfluous in the definition actually) and an
-antisymmetry property. Weakening the definition to make the relation reflexive means the asymmetry property can no longer hold i.e. now when $xRy$, it is possible $(yRx)$. With the addition
-of antisymmetry, this can only be true when $x = y$ . This ensures that two elements can only be related in "both directions" if they are the same, implying that the equivalent guarantees
-of the asymmetry property are maintained in the presence of reflexivity for weak partial orders.
-
+it is both antisymmetric and irreflexive. So the asymmetry property of the strict
+partial order subsumes both an irreflexive property (superfluous in the definition actually)
+and an antisymmetry property. Weakening the definition to make the relation
+reflexive means the asymmetry property can no longer hold i.e. now when $xRy$,
+it is possible $yRx$. With the addition of antisymmetry, this can only be true
+when $x = y$. This ensures that two elements can only be related in "both directions"
+if they are the same, implying that the equivalent guarantees
+of the asymmetry property are maintained in the presence of reflexivity
+for weak partial orders.
 
 To work through a very simple example of a poset, let's take a set $S$ = {1,2,3}
 and its powerset P($S$) = {$\varnothing$, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1, 2, 3}}.
-With $R$ defined as $\subseteq$ i.e. subset , $R$ is:
+With $R$ defined as $\subseteq$ i.e. subset, $R$ is:
 
-- reflexive (a set is always its own subset)
-- transitive (any element S$_1$ within P($S$) has a subset of another element S$_2$ and
-all elements are subsets of the maximal set element {1,2,3})
-- antisymmetric (every element S$_1$ of P($S$) is subset of another element S$_2$; if
-S$_2$ is a subset of S$_1$, then S$_1$ = S$_2$)
+- reflexive - a set is always its own subset ({1} $\subseteq {1}. {2} $\subseteq$ {2} in P($S$))
+- transitive - any element S$_1$ within S is a subset of another element S$_2$
+which in turn is the subset of another element S$_3$ ({1} $\subseteq$ {1,3}
+$\subseteq$ {1,2,3} $\implies$ {1} $\subseteq$ {1,2,3}; all elements is P($S$)
+are subsets of the maximal element {1,2,3})
+- antisymmetric - every element S$_1$ of P($S$) is subset of another element S$_2$;
+if S$_2$ is a subset of S$_1$, then S$_1$ = S$_2$ ({1,2} $\subseteq$ {1,2} and
+{1,2} $\subseteq$ {1,2} only when {1,2} = {1,2})
 
 <!-- (insert diagram- Hasse) -->
 
-An poset $X$ is termed a **chain** or a **linearly ordered set** or a **totally ordered set**
-when any two elements of $X$ are comparable ($\forall x, y \in X, xRy \lor yRx$).
+An poset $X$ is termed a **chain** or a **linearly ordered set** or a **totally
+ordered set** when any two elements of $X$ are comparable ($\forall x, y \in X,
+xRy \lor yRx$).
 
 The book ["Introduction to Lattices and Order"](https://www.cambridge.org/core/books/introduction-to-lattices-and-order/946458CB6638AF86D85BA00F5787F4F4) covers many more definitions and examples
-on orders. The next topic that arises from the study of relations and orders are lattices which I'll write it up in my next blog post.
+on orders. The next topic that arises from the study of relations and orders are
+lattices which I'll write it up in my next blog post.
 
 
 References:

@@ -21,6 +21,7 @@ yarn-error.log
 .vscode
 ideas
 dist-newstyle/
+.DS_Store
 
 # Don't store assets
 assets/other

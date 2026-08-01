@@ -1,0 +1,53 @@
+<svg width="280" height="280" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>A general finite poset with lettered elements, bounded by top and bottom</title>
+<desc>A nine-element poset labeled a through i, with a top and bottom element, drawn as a Hasse diagram.</desc>
+
+<g stroke="black" stroke-width="0.8">
+<line x1="260" y1="40" x2="190" y2="110"/>
+<line x1="260" y1="40" x2="280" y2="110"/>
+
+<line x1="190" y1="110" x2="90" y2="180"/>
+<line x1="190" y1="110" x2="160" y2="180"/>
+<line x1="280" y1="110" x2="160" y2="180"/>
+<line x1="280" y1="110" x2="230" y2="180"/>
+<line x1="280" y1="110" x2="300" y2="180"/>
+
+<line x1="90" y1="180" x2="90" y2="250"/>
+<line x1="90" y1="180" x2="170" y2="250"/>
+<line x1="160" y1="180" x2="170" y2="250"/>
+<line x1="230" y1="180" x2="170" y2="250"/>
+<line x1="230" y1="180" x2="250" y2="250"/>
+<line x1="300" y1="180" x2="250" y2="250"/>
+
+<line x1="90" y1="250" x2="170" y2="320"/>
+<line x1="170" y1="250" x2="170" y2="320"/>
+<line x1="250" y1="250" x2="170" y2="320"/>
+</g>
+
+<circle cx="260" cy="40" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="272" y="36" font-family="Georgia, serif" font-size="15">&#8868;</text>
+
+<circle cx="190" cy="110" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="176" y="105" font-family="Georgia, serif" font-style="italic" font-size="15" text-anchor="end">h</text>
+<circle cx="280" cy="110" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="292" y="105" font-family="Georgia, serif" font-style="italic" font-size="15">i</text>
+
+<circle cx="90" cy="180" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="76" y="175" font-family="Georgia, serif" font-style="italic" font-size="15" text-anchor="end">d</text>
+<circle cx="160" cy="180" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="160" y="168" font-family="Georgia, serif" font-style="italic" font-size="15" text-anchor="middle">e</text>
+<circle cx="230" cy="180" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="230" y="168" font-family="Georgia, serif" font-style="italic" font-size="15" text-anchor="middle">f</text>
+<circle cx="300" cy="180" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="312" y="175" font-family="Georgia, serif" font-style="italic" font-size="15">g</text>
+
+<circle cx="90" cy="250" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="76" y="245" font-family="Georgia, serif" font-style="italic" font-size="15" text-anchor="end">a</text>
+<circle cx="170" cy="250" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="170" y="238" font-family="Georgia, serif" font-style="italic" font-size="15" text-anchor="middle">b</text>
+<circle cx="250" cy="250" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="264" y="245" font-family="Georgia, serif" font-style="italic" font-size="15">c</text>
+
+<circle cx="170" cy="320" r="4" fill="white" stroke="black" stroke-width="1"/>
+<text x="182" y="332" font-family="Georgia, serif" font-size="15">&#8869;</text>
+</svg>

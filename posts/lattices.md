@@ -6,7 +6,7 @@ katex: true
 published: true
 ---
 
-The essential idea from [Orders](../docs/posts/order.html) is that
+The essential idea from [the previous post on orders](../posts/order.html) is that
 comparing the
 elements of a set gives rise to relations between them and adding a "sense" (a
 measure that quantifies the relation mathematically) to the relation allows for

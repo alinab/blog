@@ -1,7 +1,7 @@
 ---
 title: "Bounds for Ordered Sets"
 date: 2026-08-01
-tags: post, fpl
+tags: [post, fpl]
 katex: true
 published: true
 ---

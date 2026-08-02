@@ -18,7 +18,7 @@
 <h1><em class="date"><span>2026-08-01</span></em> Bounds for Ordered Sets</h1>
 
 
-<p>The essential idea from <a href="../docs/posts/order.html">Orders</a> is that
+<p>The essential idea from <a href="../posts/order.html">the previous post on orders</a> is that
 comparing the
 elements of a set gives rise to relations between them and adding a “sense” (a
 measure that quantifies the relation mathematically) to the relation allows for

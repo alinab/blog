@@ -1,14 +1,32 @@
 body {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/assets/images/img_vietnam.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.content {
     width: 40em;
     max-width: 1060px;
     margin: 1.5em;
-    background-color: black;
-    background-image: url('/assets/images/img_vietnam.jpg');
-    background-repeat: no-repeat;
-    background-position: left top;
     color: black;
     font-family: "IBM Plex Serif", Garamond, serif;
     font-size: 1.1em;
+    position: relative;
 }
 
 a {

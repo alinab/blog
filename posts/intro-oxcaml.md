@@ -3,7 +3,7 @@ title: "A Brief Introduction to OxCaml Modes"
 date: 2026-08-31
 tags: [post, oxcaml, fpl]
 katex: true
-published: true
+live: true
 ---
 
 Having recently read through the paper on [OxCaml](https://dl.acm.org/doi/pdf/10.1145/3674642),

@@ -3,7 +3,7 @@ title: "Bounds for Ordered Sets"
 date: 2026-08-01
 tags: [post, fpl]
 katex: true
-published: true
+live: true
 ---
 
 The essential idea from [the previous post on orders](../posts/order.html) is that

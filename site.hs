@@ -101,12 +101,12 @@ postList sortFilter = do
 
 isPublished :: (MonadMetadata m, MonadFail m) => Item a -> m Bool
 isPublished (itemIdentifier -> ident) = do
-  publishedM <- getMetadataField ident "published"
-  case publishedM of
+  liveM <- getMetadataField ident "live"
+  case liveM of
     Nothing -> return False
     Just "false" -> return False
     Just "true" -> return True
-    Just s -> fail ("invalid `published' metadata value: " ++ s)
+    Just s -> fail ("invalid `live' metadata value: " ++ s)
 
 isTagFpl :: (MonadMetadata m, MonadFail m) => Item a -> m Bool
 isTagFpl (itemIdentifier -> ident) = elem "fpl" <$> getTags ident

@@ -3,7 +3,7 @@ title: "Putting Everything in Order"
 date: 2026-07-31
 tags: [post, fpl]
 katex: true
-published: true
+live: true
 ---
 
 

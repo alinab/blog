@@ -38,7 +38,7 @@ run.
 Recall that closures are functions that capture something from their surrounding contexts
 &mdash; variables, values (lists, records, ...), references
 etc. &mdash; and types in OxCaml for contexts and variables are:
-([from the previous post](/docs/posts/intro-oxcaml.html)):
+([from the previous post](/posts/intro-oxcaml.html)):
 
 ```ocaml
 Γ ::= ∅ | Γ, x : − | Γ, x : τ @ μ
@@ -198,7 +198,7 @@ cannot capture a value that's only usable once.
 
 Before tackling the rest of the equation, a `join` is defined as the least upper
 bound of two ordered elements (the details/definitions can be refreshed from the
-post on [order](/docs/posts/order.html)).
+post on [order](/posts/order.html)).
 
 The outcomes of the join `u₁ ∨ a₂†` given `ONCE† := UNIQUE`, `MANY† := ALIASED`,
 `UNIQUE < ALIASED` and `MANY < ONCE` for every combination of `u₁` and `a₂†` are:
@@ -1233,7 +1233,7 @@ before going through the actual typing rule.
 2. **The paper's combinator.** `val borrow : 'a @ unique ->
    ('a @ local -> 'b) -> ('a * 'b aliased) @ unique` is an
    ordinary function built *using* `borrow_`. This function was previously
-   used in the [`sneaky` example](/docs/posts/intro-oxcaml.html).
+   used in the [`sneaky` example](/posts/intro-oxcaml.html).
 
    ```ocaml
    let borrow x f = let result = f (borrow_ (x : 'a @ local))
@@ -2368,9 +2368,9 @@ out of it is itself local, so `f` must be able to accept a local argument too.
 
 This post took a while to come up with but using Claude as a tool was helpful in
 many ways. I used it to come up with most of the code snippets, check the text for
-errors of grammar, ensure that the content attributed to the OxCaml paper was
-included in the post correctly and finally make sure that all the code samples
-ran correctly.
+errors of grammar, ensure that the content from the paper reproduced here
+(the type inference equations) is correct, generate the (SVG) diagrams and
+finally make sure that all the code samples ran correctly.
 
 Apart from a brief discussion on how the mode system handles uniqueness as
 compared to a system with pre-types, I haven't added anything related to the

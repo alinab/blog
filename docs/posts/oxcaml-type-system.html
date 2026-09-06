@@ -63,7 +63,7 @@ run.</p>
 <p>Recall that closures are functions that capture something from their surrounding contexts
 — variables, values (lists, records, …), references
 etc. — and types in OxCaml for contexts and variables are:
-(<a href="../docs/posts/intro-oxcaml.html" target="_blank" rel="noopener noreferrer">from the previous post</a>):</p>
+(<a href="../posts/intro-oxcaml.html" target="_blank" rel="noopener noreferrer">from the previous post</a>):</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Γ ::= ∅ | Γ, x : − | Γ, x : τ @ μ</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>τ ::= <span class="dv">1</span> | τ + τ | τ × τ | □^ν τ | τ @ μ → τ @ μ | ♣</span></code></pre></div>
 <p>A closure with type <code>τ @ μ → τ @ μ</code> capturing a variable with type <code>τ @ μ</code> from
@@ -297,7 +297,7 @@ between modes are as follows:</p>
 cannot capture a value that’s only usable once.</p>
 <p>Before tackling the rest of the equation, a <code>join</code> is defined as the least upper
 bound of two ordered elements (the details/definitions can be refreshed from the
-post on <a href="../docs/posts/order.html" target="_blank" rel="noopener noreferrer">order</a>).</p>
+post on <a href="../posts/order.html" target="_blank" rel="noopener noreferrer">order</a>).</p>
 <p>The outcomes of the join <code>u₁ ∨ a₂†</code> given <code>ONCE† := UNIQUE</code>, <code>MANY† := ALIASED</code>,
 <code>UNIQUE &lt; ALIASED</code> and <code>MANY &lt; ONCE</code> for every combination of <code>u₁</code> and <code>a₂†</code> are:</p>
 <table>
@@ -1331,7 +1331,7 @@ confirms this.</p>
 <code>&amp;x</code> notation.</p></li>
 <li><p><strong>The paper’s combinator.</strong> <code>val borrow : 'a @ unique -&gt; ('a @ local -&gt; 'b) -&gt; ('a * 'b aliased) @ unique</code> is an
 ordinary function built <em>using</em> <code>borrow_</code>. This function was previously
-used in the <a href="../docs/posts/intro-oxcaml.html" target="_blank" rel="noopener noreferrer"><code>sneaky</code> example</a>.</p>
+used in the <a href="../posts/intro-oxcaml.html" target="_blank" rel="noopener noreferrer"><code>sneaky</code> example</a>.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> borrow x f = <span class="kw">let</span> <span class="dt">result</span> = f (borrow_ (x : 'a @ local))</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>      <span class="kw">in</span> (x : 'a @ unique), { a = <span class="dt">result</span> }</span></code></pre></div></li>
 <li><p><strong>The <code>BORROW</code> typing rule</strong> :</p>
@@ -2609,9 +2609,9 @@ out of it is itself local, so <code>f</code> must be able to accept a local argu
 <h2 id="credits-and-wrapping-up">Credits and Wrapping up <a href="#credits-and-wrapping-up" class="section-link">#</a></h2>
 <p>This post took a while to come up with but using Claude as a tool was helpful in
 many ways. I used it to come up with most of the code snippets, check the text for
-errors of grammar, ensure that the content attributed to the OxCaml paper was
-included in the post correctly and finally make sure that all the code samples
-ran correctly.</p>
+errors of grammar, ensure that the content from the paper reproduced here
+(the type inference equations) is correct, generate the (SVG) diagrams and
+finally make sure that all the code samples ran correctly.</p>
 <p>Apart from a brief discussion on how the mode system handles uniqueness as
 compared to a system with pre-types, I haven’t added anything related to the
 variety of how different language systems conceptualize and deal with

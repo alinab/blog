@@ -25,6 +25,10 @@ main = hakyllWith config $ do -- Assets
     route idRoute
     compile copyFileCompiler
 
+  match "CNAME" $ do
+    route idRoute
+    compile copyFileCompiler
+
   -- Templates
   match "templates/*" $ do
     compile templateCompiler

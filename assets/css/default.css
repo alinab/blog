@@ -393,6 +393,15 @@ small {
     font-weight: 500;
 }
 
+.note-flag {
+    font-size: 1.00rem;
+    font-style: italic;
+    color: #5b5b5b;
+    background-color: #e8e8de;
+    padding: 0.15rem 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
 .footer {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;

@@ -1,0 +1,26 @@
+<div id="title">
+  <a id="logo" href="/notes.html">&#8592;</a>
+</div>
+<div id="wrapper" class="article note">
+<h1><em class="date"><span>$date$</span></em> $renderedTitle$</h1>
+<p class="note-flag">rough note &middot; thinking out loud, not a finished post</p>
+
+$if(toc)$
+  <div id="$idprefix$TOC">
+$toc$
+  </div>
+$endif$
+$body$
+
+
+<div class="footer">
+  <hr>
+  <a href="mailto:alina@blue-indus.in">alina@blue-indus.in</a> &middot; <a
+      href="https://x.com/interregnumish">twitter</a> &middot; <a
+      href="https://mathstodon.xyz/@alinab">mastodon</a> &middot; <a
+  href="https://github.com/alinab/fork-blog/tree/master/$path$">source</a>
+</div>
+
+<div id="comments"></div>
+
+</div>

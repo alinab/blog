@@ -39,6 +39,16 @@ main = hakyllWith config $ do -- Assets
       loadAndApplyTemplate "templates/default.html" postCtx >>=
       relativizeUrls
 
+  -- For Notes
+  match ("notes/*.md" .||. "notes/*.lhs") $ do
+    route $ setExtension "html"
+    compile $
+      pandocMathCompiler >>=
+      loadAndApplyTemplate "templates/note.html" noteCtx >>=
+      saveSnapshot "content" >>=
+      loadAndApplyTemplate "templates/default.html" noteCtx >>=
+      relativizeUrls
+
   {-
   -- Posts
   match "code/*" $ do
@@ -58,6 +68,17 @@ main = hakyllWith config $ do -- Assets
       makeItem "" >>=
       loadAndApplyTemplate "templates/archive.html" archiveCtx >>=
       loadAndApplyTemplate "templates/default.html" archiveCtx >>=
+      relativizeUrls
+
+  -- Notes index
+  create ["notes.html"] $ do
+    route idRoute
+    let notesIndexCtx =
+          field "notes" (\_ -> noteList recentFirst) <> constField "title" "notes — index" <> defaultContext
+    compile $
+      makeItem "" >>=
+      loadAndApplyTemplate "templates/notes.html" notesIndexCtx >>=
+      loadAndApplyTemplate "templates/default.html" notesIndexCtx >>=
       relativizeUrls
 
   -- Splash page
@@ -97,6 +118,31 @@ postList sortFilter = do
   posts <- filterM isPublished =<< sortFilter =<< loadAll "posts/*"
   itemTpl <- loadBody "templates/post-item.html"
   list <- applyTemplateList itemTpl postCtx posts
+  return list
+
+noteCtx :: Context String
+noteCtx = mconcat
+  [ dateField "date" "%Y-%m-%d"
+  , listFieldWith "tags" (field "tag" (return . itemBody)) $ \item -> do
+      let identifier = itemIdentifier item
+      meta <- getMetadata identifier
+      let tags = fromMaybe ["note"] $ lookupStringList "tags" meta
+      return $ map (Item identifier) tags
+  , field "renderedTitle" $ \item -> do
+      metadata <- getMetadata (itemIdentifier item)
+      let str = fromMaybe "untitled" (lookupString "title" metadata)
+      compilerUnsafeIO $ Pandoc.runIOorExplode $ do
+        strWithParagraph <- Pandoc.readMarkdown Pandoc.def (T.pack str) >>= Pandoc.writeHtml5String Pandoc.def
+        -- remove <p> and </p>
+        return (T.unpack (T.reverse (T.drop (T.length "</p>") (T.reverse (T.drop (T.length "<p>") strWithParagraph)))))
+  , defaultContext
+  ]
+
+noteList :: ([Item String] -> Compiler [Item String]) -> Compiler String
+noteList sortFilter = do
+  notes <- filterM isPublished =<< sortFilter =<< loadAll "notes/*"
+  itemTpl <- loadBody "templates/note-item.html"
+  list <- applyTemplateList itemTpl noteCtx notes
   return list
 
 isPublished :: (MonadMetadata m, MonadFail m) => Item a -> m Bool

@@ -168,5 +168,12 @@ pandocMathCompiler = do
           let link = Pandoc.Link ("", ["section-link"], []) [Pandoc.Str "#"] ("#" <> idAttr, "")
           in Pandoc.Header n attr (inlines <> [Pandoc.Space, link])
         f x = x
+  -- Open real links (not same-page "#..." anchors) in a new tab.
+  let newTabLinkTransform :: Monad m => Pandoc.Pandoc -> m Pandoc.Pandoc
+      newTabLinkTransform = return . Pandoc.walk f where
+        f (Pandoc.Link (ident, classes, kvs) inlines target@(url, _))
+          | not ("#" `T.isPrefixOf` url) =
+              Pandoc.Link (ident, classes, kvs ++ [("target", "_blank"), ("rel", "noopener noreferrer")]) inlines target
+        f x = x
   sidenotes <- maybe False (== "true") <$> getMetadataField i "sidenotes"
-  pandocCompilerWithTransformM defaultHakyllReaderOptions (writerOpts sidenotes) (sectionLinkTransform >=> katexTransform)
+  pandocCompilerWithTransformM defaultHakyllReaderOptions (writerOpts sidenotes) (sectionLinkTransform >=> newTabLinkTransform >=> katexTransform)

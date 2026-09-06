@@ -5,12 +5,12 @@ td.sourceCode { padding-left: 5px; }
 code.sourceCode span.kw { color: #007020; font-weight: bold; } 
 code.sourceCode span.bu { color: #007020; font-weight: bold; } 
 code.sourceCode span.dt { color: #902000; }
-code.sourceCode span.dv { color: #40a070; }
-code.sourceCode span.bn { color: #40a070; }
-code.sourceCode span.fl { color: #40a070; }
-code.sourceCode span.ch { color: #4070a0; }
-code.sourceCode span.st { color: #4070a0; }
-code.sourceCode span.co { color: #60a0b0; font-style: italic; }
+code.sourceCode span.dv { color: #0D733D; }
+code.sourceCode span.bn { color: #0D733D; }
+code.sourceCode span.fl { color: #0D733D; }
+code.sourceCode span.ch { color: #0C5697; }
+code.sourceCode span.st { color: #0C5697; }
+code.sourceCode span.co { color: #1B6E7E; font-style: italic; }
 code.sourceCode span.ot { color: #007020; }
 code.sourceCode span.al { color: red; font-weight: bold; }
 code.sourceCode span.fu { color: #0838b1; }

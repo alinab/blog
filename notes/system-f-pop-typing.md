@@ -1,7 +1,7 @@
 ---
 title: "Jigsawing an extended System-F calculus"
 date: 2026-09-18
-tags: [note, system-f]
+tags: [note, fpl, system-f-pop]
 katex: true
 live: true
 ---

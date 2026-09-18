@@ -168,10 +168,20 @@ h1 a, h2 a, h3 a {
 
 /* Stuff for the article display */
 
-.article .sourceCode, .article pre {
+.article .sourceCode, .article pre, .article blockquote, .article table {
     grid-column-start: 1 !important;
     grid-column-end: 3 !important;
     justify-self: stretch;
+}
+
+.article blockquote {
+    overflow-x: auto;
+}
+
+.article table {
+    display: block;
+    overflow-x: auto;
+    background-color: #f0f0f083;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.95) and (max-width: 1000px) {
@@ -205,7 +215,7 @@ h1, h2, h3, h4, h5, h5 {
 }
 
 .article h1 {
-    color: #3e4a4e;
+    color: #0052C2;
     text-align:left;
     font-size: 1.8rem;
     font-weight: 700;
@@ -228,7 +238,7 @@ p {
 
 blockquote {
     background: #f0f0f083;
-    border-left: 0.2rem solid #7F1315;
+    border-left: 0.2rem solid #0061E6;
     margin: 0 0 0.5rem 2rem;
     padding: 0.5rem 0.7rem;
 }
@@ -238,20 +248,20 @@ blockquote p {
 }
 
 .article h2 {
-    color: #3e4a4e;
+    color: #0052C2;
     font-size:1.6rem;
     font-weight: 500;
     line-height: 1.7rem;
 }
 
 .article h3 {
-    color: #3e4a4e;
+    color: #0052C2;
     font-size:1.3rem;
     font-weight: 500;
 }
 
 a {
-    color: #0C5697;
+    color: #0052C2;
 }
 
 .article ul, .article ol {
@@ -280,12 +290,12 @@ table {
 
 /* Pandoc and agda */
 pre {
-    background-color: #E1EEFA;
+    background-color: #D4E3F7;
     overflow-y: auto;
 }
 
 p code, li code {
-    background-color: rgba(225, 238, 250, 0.6);
+    background-color: rgba(212, 227, 247, 0.6);
 }
 
 p code {
@@ -317,7 +327,7 @@ table.sourceCode {
 */
 
 .article td {
-  padding: 0.1rem 0.2rem;
+  padding: 0.75rem 0.2rem;
 }
 
 .article img {

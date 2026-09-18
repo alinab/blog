@@ -168,8 +168,10 @@ renderFeed f = do
   route idRoute
   let feedCtx = postCtx <> bodyField "description"
   compile $ do
-    posts <- fmap (take 10) . recentFirst =<< filterM isPublished =<< loadAllSnapshots "posts/*" "content"
-    f feedConf feedCtx posts
+    posts <- loadAllSnapshots "posts/*" "content"
+    notes <- loadAllSnapshots "notes/*" "content"
+    items <- fmap (take 10) . recentFirst =<< filterM isPublished (posts ++ notes)
+    f feedConf feedCtx items
 
 renderFeedFpl
   :: (FeedConfiguration -> Context String -> [Item String] -> Compiler (Item String))
@@ -178,11 +180,12 @@ renderFeedFpl f = do
   route idRoute
   let feedCtx = postCtx <> bodyField "description"
   compile $ do
-    posts <- fmap (take 20) . recentFirst
+    posts <- loadAllSnapshots "posts/*" "content"
+    notes <- loadAllSnapshots "notes/*" "content"
+    items <- fmap (take 20) . recentFirst
       =<< filterM isTagFpl
-      =<< filterM isPublished
-      =<< loadAllSnapshots "posts/*" "content"
-    f feedConf feedCtx posts
+      =<< filterM isPublished (posts ++ notes)
+    f feedConf feedCtx items
 
 
 feedConf :: FeedConfiguration
